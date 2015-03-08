@@ -67,25 +67,152 @@
 <pre><code>https://developer.paypal.com
 </code></pre>
 
-<p>2.- Add the gem to the Gemfile</p>
+<p><br />
+2.- Add the gem to the Gemfile</p>
 
 <pre><code>gem 'paypal-sdk-rest'
 </code></pre>
 
-<p>3.- From the console we execute </p>
+<p><br />
+3.- From the console we execute </p>
 
-<pre><code>bundle install 4.- We configure the gem executing from the console:
-
-rails g paypal:sdk:install
+<pre><code>bundle install
 </code></pre>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">print_hi</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
-  <span class="nb">puts</span> <span class="s2">&quot;Hi, </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="k">end</span>
-<span class="n">print_hi</span><span class="p">(</span><span class="s1">&#39;Tom&#39;</span><span class="p">)</span>
-<span class="c1">#=&gt; prints &#39;Hi, Tom&#39; to STDOUT.</span></code></pre></div>
+<p><br />
+4.- We configure the gem executing from the console the following command:</p>
 
-<p>Check out the <a href="http://jekyllrb.com">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on <a href="https://github.com/jekyll/jekyll-help">Jekyll’s dedicated Help repository</a>.</p>
+<pre><code>rails g paypal:sdk:install
+</code></pre>
+
+<p><br />
+This command will generate  2 files:  </p>
+
+<pre><code>1. "config/paypal.yml" -&gt; It has to be configured with the data provided by the sandbox account
+</code></pre>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="ss">development</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">default</span>
+  		<span class="ss">username</span><span class="p">:</span> <span class="n">johnconnor</span><span class="o">-</span><span class="n">facilitator_api1</span><span class="o">.</span><span class="n">gmail</span><span class="o">.</span><span class="n">com</span>
+  		<span class="ss">password</span><span class="p">:</span> <span class="no">S6W9MEQFMNSUZN7H</span>
+  		<span class="ss">signature</span><span class="p">:</span> <span class="no">A7kN04CpKKzrZo9PJl0kSa1AQfAWAH2uG3SSRgG5bAZMPRikS</span><span class="o">-</span><span class="no">HCATvg</span>
+  		<span class="ss">client_id</span><span class="p">:</span> <span class="no">Aci7fqiVhoE6pwROdRHUluBihKjat</span><span class="o">-</span><span class="n">sPXUJ7sbdeNqsO4</span><span class="o">-</span><span class="n">txKiZCN1YgvZ8BXMk5THqMMUtwqYdkBch1</span> 
+  		<span class="ss">client_secret</span><span class="p">:</span> <span class="no">EF_TqIx5</span><span class="o">-</span><span class="n">zajOGa3gHrN3QO77OrXlkIL1Xsd9eoW3YhzmbQNMImB5Bypt5cVwBJITUnruNDLuLG7U19P</span>
+
+  		<span class="ss">app_id</span><span class="p">:</span> <span class="no">APP</span><span class="o">-</span><span class="mi">80</span><span class="no">W284485P519543T</span>
+  		<span class="ss">http_timeout</span><span class="p">:</span> <span class="mi">30</span>
+  		<span class="ss">mode</span><span class="p">:</span> <span class="n">sandbox</span>
+  		<span class="ss">sandbox_email_address</span><span class="p">:</span> <span class="n">johnconnor</span><span class="o">-</span><span class="n">facilitator</span><span class="vi">@gmail</span><span class="o">.</span><span class="n">com</span>
+  		<span class="c1"># # with certificate</span>
+  		<span class="c1"># cert_path: &quot;config/cert_key.pem&quot;</span>
+  		<span class="c1"># # with token authentication</span>
+  		<span class="c1"># token: ESTy2hio5WJQo1iixkH29I53RJxaS0Gvno1A6.YQXZgktxbY4I2Tdg</span>
+  		<span class="c1"># token_secret: ZKPhUYuwJwYsfWdzorozWO2U9pI</span>
+  		<span class="c1"># # with Proxy</span>
+  		<span class="c1"># http_proxy: http://proxy-ipaddress:3129/</span>
+  		<span class="c1"># # with device ip address</span>
+  		<span class="c1"># device_ipaddress: &quot;127.0.0.1&quot;</span>
+
+	<span class="nb">test</span><span class="p">:</span>
+  		<span class="o">&lt;&lt;</span><span class="p">:</span> <span class="o">*</span><span class="n">default</span>
+
+	<span class="ss">production</span><span class="p">:</span>
+  		<span class="ss">mode</span><span class="p">:</span> <span class="n">live</span>
+  		<span class="ss">username</span><span class="p">:</span> <span class="no">USERNAME</span>
+  		<span class="ss">password</span><span class="p">:</span> <span class="no">PASSWORD</span>
+  		<span class="ss">signature</span><span class="p">:</span> <span class="no">SIGNATURE</span>
+  		<span class="ss">app_id</span><span class="p">:</span> <span class="no">APP_ID</span></code></pre></div>
+
+<p><br /></p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="mi">2</span><span class="o">.</span><span class="n">-</span> <span class="no">Initializer</span><span class="o">/</span><span class="n">paypal</span><span class="o">.</span><span class="n">rb</span>
+		<span class="no">PayPal</span><span class="o">::</span><span class="no">SDK</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;config/paypal.yml&quot;</span><span class="p">,</span> <span class="no">Rails</span><span class="o">.</span><span class="n">env</span><span class="p">)</span>
+		<span class="no">PayPal</span><span class="o">::</span><span class="no">SDK</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="no">Rails</span><span class="o">.</span><span class="n">logger</span></code></pre></div>
+
+<p><br />
+5.- We generate de Payment in our Cart model</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">create_paypal_payment</span><span class="p">(</span><span class="n">order</span><span class="p">)</span>
+    	  <span class="vi">@api</span> <span class="o">=</span> <span class="no">PayPal</span><span class="o">::</span><span class="no">SDK</span><span class="o">::</span><span class="no">AdaptivePayments</span><span class="o">.</span><span class="n">new</span>
+    	  <span class="vi">@pay</span> <span class="o">=</span> <span class="vi">@api</span><span class="o">.</span><span class="n">build_pay</span><span class="p">({</span><span class="ss">:actionType</span> <span class="o">=&gt;</span> <span class="s2">&quot;PAY&quot;</span><span class="p">,</span>
+      	  <span class="ss">:cancelUrl</span> <span class="o">=&gt;</span> <span class="s2">&quot;http://dev.johnconnor.com/cart&quot;</span><span class="p">,</span>
+      	  <span class="ss">:currencyCode</span> <span class="o">=&gt;</span> <span class="s2">&quot;EUR&quot;</span><span class="p">,</span>
+      	  <span class="ss">:ipnNotificationUrl</span> <span class="o">=&gt;</span> <span class="n">ok_paypal_cart_index_url</span><span class="p">,</span>
+      	  <span class="ss">:receiverList</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="ss">:receiver</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="p">{</span><span class="ss">:amount</span> <span class="o">=&gt;</span> <span class="n">session</span><span class="o">[</span><span class="ss">:order_total</span><span class="o">].</span><span class="n">to_f</span><span class="o">/</span><span class="mi">100</span><span class="p">,</span> <span class="ss">:email</span> <span class="o">=&gt;</span> <span class="s2">&quot;johnconnor-facilitator@gmail.com&quot;</span><span class="p">}</span><span class="o">]</span> <span class="p">},</span>
+      <span class="c1"># :returnUrl =&gt; &quot;http://localhost:3000/cart/finished?order_number=&quot; + order.order_number + &quot;&amp;uid=&quot; + order.unique_guid</span>
+      	  <span class="ss">:returnUrl</span> <span class="o">=&gt;</span> <span class="s2">&quot;http://dev.johnconnor.com/cart/finished?order_number=&quot;</span> <span class="o">+</span> <span class="n">order</span><span class="o">.</span><span class="n">order_number</span> <span class="o">+</span> <span class="s2">&quot;&amp;uid=&quot;</span> <span class="o">+</span> <span class="n">order</span><span class="o">.</span><span class="n">unique_guid</span>
+      <span class="p">})</span>
+    	  <span class="vi">@response</span> <span class="o">=</span> <span class="vi">@api</span><span class="o">.</span><span class="n">pay</span><span class="p">(</span><span class="vi">@pay</span><span class="p">)</span>
+
+      <span class="k">if</span> <span class="vi">@response</span><span class="o">.</span><span class="n">success?</span> <span class="o">&amp;&amp;</span> <span class="vi">@response</span><span class="o">.</span><span class="n">payment_exec_status</span> <span class="o">!=</span> <span class="s2">&quot;ERROR&quot;</span>
+        <span class="n">order</span><span class="o">.</span><span class="n">paypal_key</span> <span class="o">=</span> <span class="vi">@response</span><span class="o">.</span><span class="n">payKey</span>
+      	<span class="n">order</span><span class="o">.</span><span class="n">save</span>
+      	<span class="n">redirect_to</span> <span class="vi">@api</span><span class="o">.</span><span class="n">payment_url</span><span class="p">(</span><span class="vi">@response</span><span class="p">)</span>  <span class="c1"># Url to complete payment</span>
+   	  <span class="k">else</span>
+      	<span class="vi">@response</span><span class="o">.</span><span class="n">error</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">message</span>
+      <span class="k">end</span>
+  <span class="k">end</span></code></pre></div>
+
+<p><br />
+6.- Finally, we add the ok_payment method in which we will assign the right values like if valid_payment, delete_cart, and etc…</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">ok_paypal</span>
+      <span class="k">if</span> <span class="no">PayPal</span><span class="o">::</span><span class="no">SDK</span><span class="o">::</span><span class="no">Core</span><span class="o">::</span><span class="no">API</span><span class="o">::</span><span class="no">IPN</span><span class="o">.</span><span class="n">valid?</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">raw_post</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;IPN message: VERIFIED&quot;</span><span class="p">)</span>
+        <span class="n">order</span> <span class="o">=</span> <span class="no">Order</span><span class="o">.</span><span class="n">find_by_paypal_key</span> <span class="n">params</span><span class="o">[</span><span class="ss">:pay_key</span><span class="o">]</span>      
+        <span class="k">if</span> <span class="n">order</span><span class="o">.</span><span class="n">present?</span>
+          <span class="n">order</span><span class="o">.</span><span class="n">valid_payment</span> <span class="o">=</span> <span class="kp">true</span>
+          <span class="n">order</span><span class="o">.</span><span class="n">sentmail</span> <span class="o">=</span> <span class="kp">true</span>
+          <span class="n">order</span><span class="o">.</span><span class="n">save</span>
+
+          <span class="n">order</span><span class="o">.</span><span class="n">order_details</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">od</span><span class="o">|</span>
+            <span class="n">od</span><span class="o">.</span><span class="n">valid_payment</span> <span class="o">=</span> <span class="kp">true</span>
+            <span class="n">od</span><span class="o">.</span><span class="n">save</span>
+
+            <span class="n">od</span><span class="o">.</span><span class="n">sales</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">s</span><span class="o">|</span>
+              <span class="n">s</span><span class="o">.</span><span class="n">valid_payment</span> <span class="o">=</span> <span class="kp">true</span>
+              <span class="n">s</span><span class="o">.</span><span class="n">save</span>
+
+              <span class="n">payment</span> <span class="o">=</span> <span class="n">number_with_precision</span><span class="p">((</span><span class="n">s</span><span class="o">.</span><span class="n">price</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">profit</span><span class="o">/</span><span class="mi">100</span><span class="p">)))</span> <span class="o">*</span> <span class="n">s</span><span class="o">.</span><span class="n">quantity</span><span class="p">,</span> <span class="ss">precision</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="ss">separator</span><span class="p">:</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+              <span class="n">amount</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">quantity</span>
+              <span class="n">event</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">picture</span><span class="o">.</span><span class="n">folder</span><span class="o">.</span><span class="n">event</span>
+              <span class="n">idorder</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">order_detail</span><span class="o">.</span><span class="n">order</span><span class="o">.</span><span class="n">id</span>
+              <span class="n">user</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">picture</span><span class="o">.</span><span class="n">folder</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">user</span>
+
+             <span class="no">AppMailer</span><span class="o">.</span><span class="n">send_sell_notification</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="n">payment</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">idorder</span><span class="p">,</span> <span class="n">user</span><span class="p">)</span><span class="o">.</span><span class="n">deliver</span>
+           <span class="k">end</span>
+          <span class="k">end</span>
+
+          <span class="n">session</span><span class="o">.</span><span class="n">delete</span> <span class="ss">:cart</span>
+          <span class="n">session</span><span class="o">.</span><span class="n">delete</span> <span class="ss">:order_number</span>
+          <span class="n">session</span><span class="o">.</span><span class="n">delete</span> <span class="ss">:order_total</span>
+
+          <span class="vi">@cart</span> <span class="o">=</span> <span class="kp">nil</span>
+          <span class="vi">@cart_sorted</span> <span class="o">=</span> <span class="kp">nil</span>
+
+          <span class="no">AppMailer</span><span class="o">.</span><span class="n">send_order_confirmation_to_buyer</span><span class="p">(</span><span class="n">order</span><span class="p">)</span><span class="o">.</span><span class="n">deliver</span>
+          <span class="no">AppMailer</span><span class="o">.</span><span class="n">send_order_notification</span><span class="p">(</span><span class="n">order</span><span class="p">)</span><span class="o">.</span><span class="n">deliver</span>
+         <span class="k">end</span>
+         <span class="n">render</span> <span class="ss">nothing</span><span class="p">:</span> <span class="kp">true</span>
+      <span class="k">else</span>
+
+         <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;IPN message: INVALID&quot;</span><span class="p">)</span>
+          <span class="n">render</span> <span class="ss">nothing</span><span class="p">:</span> <span class="kp">true</span>
+
+     <span class="k">end</span>
+    <span class="k">else</span>
+      	<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Conecction message: INVALID&quot;</span><span class="p">)</span>
+      	<span class="n">render</span> <span class="ss">nothing</span><span class="p">:</span> <span class="kp">true</span>
+     <span class="k">end</span>
+   <span class="k">end</span></code></pre></div>
+
+<h2 id="resources">RESOURCES</h2>
+
+<pre><code>https://github.com/paypal/PayPal-Ruby-SDK
+
+http://railscasts.com/episodes/141-paypal-basics
+
+https://developer.paypal.com/docs/
+</code></pre>
 
 
   </article>
