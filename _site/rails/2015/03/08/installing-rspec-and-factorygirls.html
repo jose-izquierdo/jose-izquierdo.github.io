@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Testing in Rails Part 1: Installing Rspec and Factory Girls</title>
+  <title>Testing in Rails Part 1: Installing Rspec and Factory Girl</title>
   <meta name="description" content="1.- Add rspec-rails to the gem file.">
 
   <link rel="stylesheet" href="/css/main.css">
@@ -57,7 +57,7 @@
         <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Testing in Rails Part 1: Installing Rspec and Factory Girls</h1>
+    <h1 class="post-title">Testing in Rails Part 1: Installing Rspec and Factory Girl</h1>
     <p class="post-meta">Mar 8, 2015</p>
   </header>
 
@@ -105,6 +105,63 @@ spec/rails_helper.rb
 
 <pre><code>bundle
 </code></pre>
+
+<p>7.- Let’s take a look on what we have installed here:</p>
+
+<p><strong>factory_girl_rails</strong> -&gt; replaces the default fixtures of Rails for feeding test data.</p>
+
+<p><strong>faker</strong> -&gt; generates emails, names, and other placeholders for the factories.</p>
+
+<p><strong>capybara</strong> -&gt; provides an easy way to simulate users’ interactions with the application.</p>
+
+<p><strong>guard-rspec</strong> -&gt; tests and runs specs automatically when it detects changes.</p>
+
+<p><strong>launchy</strong> -&gt; It opens the web browser upon failed integration specs to show what the application is rendering.</p>
+
+<p>8.- Do not forget to add a test database to the project. It should look like this:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">test</span><span class="p">:</span>
+  <span class="ss">adapter</span><span class="p">:</span> <span class="n">postgresql</span>
+  <span class="ss">encoding</span><span class="p">:</span> <span class="n">unicode</span>
+  <span class="ss">database</span><span class="p">:</span> <span class="n">db_test</span>
+  <span class="ss">pool</span><span class="p">:</span> <span class="mi">5</span>
+  <span class="ss">username</span><span class="p">:</span> 
+  <span class="ss">password</span><span class="p">:</span></code></pre></div>
+
+<p>Finally, to ensure there is a database, execute the following rake task:</p>
+
+<pre><code>$ rake db:create:all
+</code></pre>
+
+<p>9.- Let’s add <strong>capybara</strong> support by adding in the <strong>spec/spec_helper.rb</strong> file:let’s tell Rails to use it to generate starter files for our application’s test suite </p>
+
+<pre><code>require "capybara/rspec"
+</code></pre>
+
+<p>10.- Using the generators we can tell Rails to use it to generate starter files for our application’s test suite. Open config/application.rb and include the following code inside the Application class:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">config</span><span class="o">.</span><span class="n">generators</span> <span class="k">do</span> <span class="o">|</span><span class="n">g</span><span class="o">|</span>
+  <span class="n">g</span><span class="o">.</span><span class="n">test_framework</span> <span class="ss">:rspec</span><span class="p">,</span>
+    <span class="ss">:fixtures</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
+    <span class="ss">:view_specs</span> <span class="o">=&gt;</span> <span class="kp">false</span><span class="p">,</span>
+    <span class="ss">:helper_specs</span> <span class="o">=&gt;</span> <span class="kp">false</span><span class="p">,</span>
+    <span class="ss">:routing_specs</span> <span class="o">=&gt;</span> <span class="kp">false</span><span class="p">,</span>
+    <span class="ss">:controller_specs</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
+    <span class="ss">:request_specs</span> <span class="o">=&gt;</span> <span class="kp">true</span>
+  <span class="n">g</span><span class="o">.</span><span class="n">fixture_replacement</span> <span class="ss">:factory_girl</span><span class="p">,</span> <span class="ss">:dir</span> <span class="o">=&gt;</span> <span class="s2">&quot;spec/factories&quot;</span>
+<span class="k">end</span></code></pre></div>
+
+<p>Let’s see what this snippet of code is doing:</p>
+
+<p><strong>:fixtures</strong> =&gt; true specifies to generate a fixture for each model (using a Factory Girl factory, instead of an actual fixture)</p>
+
+<p><strong>:view_specs</strong> =&gt; false says to skip generating view specs. I won’t cover them in this book; instead we’ll use request specs to test interface elements.</p>
+
+<p><strong>:helper_specs</strong> =&gt; false skips generating specs for the helper files Rails generates with each controller. As your comfort level with RSpec improves, consider changing this option to true and testing these files.</p>
+
+<p><strong>:routing_specs</strong> =&gt; false omits a spec file for your config/routes.rb file. If your application is simple, as the one in this book will be, you’re probably safe skipping these specs. As your application grows, however, and takes on more complex routing, it’s a good idea to incorporate routing specs.</p>
+
+<p>And finally, <strong>g.fixture_replacement :factory_girl</strong> tells Rails to generate factories instead of fixtures, and to save them in the spec/factories directory.</p>
 
 <h2 id="resources">RESOURCES</h2>
 

@@ -5,12 +5,12 @@
     <description>Documentation, code snippets, and how to guides</description>
     <link>http://jose-izquierdo.github.io/</link>
     <atom:link href="http://jose-izquierdo.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 18 Mar 2015 18:52:47 +0100</pubDate>
-    <lastBuildDate>Wed, 18 Mar 2015 18:52:47 +0100</lastBuildDate>
+    <pubDate>Wed, 18 Mar 2015 20:20:30 +0100</pubDate>
+    <lastBuildDate>Wed, 18 Mar 2015 20:20:30 +0100</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
-        <title>Testing in Rails Part 1: Installing Rspec and Factory Girls</title>
+        <title>Testing in Rails Part 1: Installing Rspec and Factory Girl</title>
         <description>&lt;p&gt;1.- Add &lt;em&gt;rspec-rails&lt;/em&gt; to the &lt;em&gt;gem&lt;/em&gt; file.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;group&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:development&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:test&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
@@ -54,6 +54,63 @@ spec/rails_helper.rb
 
 &lt;pre&gt;&lt;code&gt;bundle
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;7.- Let’s take a look on what we have installed here:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;factory_girl_rails&lt;/strong&gt; -&amp;gt; replaces the default fixtures of Rails for feeding test data.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;faker&lt;/strong&gt; -&amp;gt; generates emails, names, and other placeholders for the factories.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;capybara&lt;/strong&gt; -&amp;gt; provides an easy way to simulate users’ interactions with the application.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;guard-rspec&lt;/strong&gt; -&amp;gt; tests and runs specs automatically when it detects changes.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;launchy&lt;/strong&gt; -&amp;gt; It opens the web browser upon failed integration specs to show what the application is rendering.&lt;/p&gt;
+
+&lt;p&gt;8.- Do not forget to add a test database to the project. It should look like this:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;adapter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;postgresql&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;encoding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;unicode&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;database&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;db_test&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;pool&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; 
+  &lt;span class=&quot;ss&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Finally, to ensure there is a database, execute the following rake task:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ rake db:create:all
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;9.- Let’s add &lt;strong&gt;capybara&lt;/strong&gt; support by adding in the &lt;strong&gt;spec/spec_helper.rb&lt;/strong&gt; file:let’s tell Rails to use it to generate starter files for our application’s test suite &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;require &quot;capybara/rspec&quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;10.- Using the generators we can tell Rails to use it to generate starter files for our application’s test suite. Open config/application.rb and include the following code inside the Application class:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;generators&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test_framework&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:rspec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;:fixtures&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;:view_specs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;:helper_specs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;:routing_specs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;:controller_specs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;:request_specs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fixture_replacement&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:factory_girl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:dir&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;spec/factories&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Let’s see what this snippet of code is doing:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;:fixtures&lt;/strong&gt; =&amp;gt; true specifies to generate a fixture for each model (using a Factory Girl factory, instead of an actual fixture)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;:view_specs&lt;/strong&gt; =&amp;gt; false says to skip generating view specs. I won’t cover them in this book; instead we’ll use request specs to test interface elements.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;:helper_specs&lt;/strong&gt; =&amp;gt; false skips generating specs for the helper files Rails generates with each controller. As your comfort level with RSpec improves, consider changing this option to true and testing these files.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;:routing_specs&lt;/strong&gt; =&amp;gt; false omits a spec file for your config/routes.rb file. If your application is simple, as the one in this book will be, you’re probably safe skipping these specs. As your application grows, however, and takes on more complex routing, it’s a good idea to incorporate routing specs.&lt;/p&gt;
+
+&lt;p&gt;And finally, &lt;strong&gt;g.fixture_replacement :factory_girl&lt;/strong&gt; tells Rails to generate factories instead of fixtures, and to save them in the spec/factories directory.&lt;/p&gt;
 
 &lt;h2 id=&quot;resources&quot;&gt;RESOURCES&lt;/h2&gt;
 
