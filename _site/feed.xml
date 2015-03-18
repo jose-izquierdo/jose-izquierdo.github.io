@@ -5,17 +5,69 @@
     <description>Documentation, code snippets, and how to guides</description>
     <link>http://jose-izquierdo.github.io/</link>
     <atom:link href="http://jose-izquierdo.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 08 Mar 2015 13:46:34 +0100</pubDate>
-    <lastBuildDate>Sun, 08 Mar 2015 13:46:34 +0100</lastBuildDate>
+    <pubDate>Wed, 18 Mar 2015 18:52:47 +0100</pubDate>
+    <lastBuildDate>Wed, 18 Mar 2015 18:52:47 +0100</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
-        <title>Testing with Rspec and Factory Girls</title>
-        <description>
+        <title>Testing in Rails Part 1: Installing Rspec and Factory Girls</title>
+        <description>&lt;p&gt;1.- Add &lt;em&gt;rspec-rails&lt;/em&gt; to the &lt;em&gt;gem&lt;/em&gt; file.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;group&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:development&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:test&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;rspec-rails&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;2.- Install the gem by running on the terminal:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;bundle
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;3.- Initialize th &lt;em&gt;spec/&lt;/em&gt; directory by running on the terminal:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rails generate rspec:install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This command will generate the following configuration files:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;.rspec
+spec/spec_helper.rb
+spec/rails_helper.rb
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;4.- Add &lt;em&gt;factory_girl_rails&lt;/em&gt; to the &lt;em&gt;gem&lt;/em&gt; file in the &lt;em&gt;:development&lt;/em&gt; and &lt;em&gt;:test&lt;/em&gt; group.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;group&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:development&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:test&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;rspec-rails&amp;#39;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;factory_girl_rails&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;5.- Also we need to add the following gems in the &lt;em&gt;:test&lt;/em&gt; group&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;group&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:test&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;faker&amp;#39;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;capybara&amp;#39;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;guard-rspec&amp;#39;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;launchy&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;6.- Install these gems by running on terminal:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;bundle
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;resources&quot;&gt;RESOURCES&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;https://github.com/rspec/rspec-rails
+
+http://everydayrails.com/2012/03/12/testing-series-intro.html
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;#UNDER CONSTRUCTION&lt;/p&gt;
 </description>
         <pubDate>Sun, 08 Mar 2015 12:47:12 +0100</pubDate>
-        <link>http://jose-izquierdo.github.io/rails/2015/03/08/testing_with-rspec-and-factorygirls.html</link>
-        <guid isPermaLink="true">http://jose-izquierdo.github.io/rails/2015/03/08/testing_with-rspec-and-factorygirls.html</guid>
+        <link>http://jose-izquierdo.github.io/rails/2015/03/08/installing-rspec-and-factorygirls.html</link>
+        <guid isPermaLink="true">http://jose-izquierdo.github.io/rails/2015/03/08/installing-rspec-and-factorygirls.html</guid>
         
         
         <category>rails</category>
