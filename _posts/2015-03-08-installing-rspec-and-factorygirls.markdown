@@ -2,7 +2,7 @@
 layout: post
 title:  "Testing in Rails Part 1: Installing Rspec and Factory Girl"
 date:   2015-03-08 11:47:12
-categories: rails
+categories: rails, testing
 ---
 
 1.- Add *rspec-rails* to the *gem* file.
@@ -113,6 +113,8 @@ And finally, **g.fixture_replacement :factory_girl** tells Rails to generate fac
 ##RESOURCES
 
 	https://github.com/rspec/rspec-rails
+
+	https://github.com/thoughtbot/factory_girl
 
 	http://everydayrails.com/2012/03/12/testing-series-intro.html
 
