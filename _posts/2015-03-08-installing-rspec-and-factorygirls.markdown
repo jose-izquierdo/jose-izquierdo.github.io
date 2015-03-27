@@ -118,5 +118,4 @@ And finally, **g.fixture_replacement :factory_girl** tells Rails to generate fac
 
 	http://everydayrails.com/2012/03/12/testing-series-intro.html
 
----
-#UNDER CONSTRUCTION
+
