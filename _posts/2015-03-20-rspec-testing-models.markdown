@@ -20,7 +20,7 @@ categories: rails, testing
 end
 {% endhighlight %}
 
-Let's stop here for a second a explain a few things about this chunk of code:
+Let's stop here for a second to explain a few things about this chunk of code:
 
 * This portion of code provides a factory that we can use throughout our specs.
 
@@ -38,6 +38,18 @@ ActionDispatch::Callbacks.after do
     FactoryGirl.find_definitions
   end
 end    
+{% endhighlight %}
+
+2.- Let's create our model spec. Under **spec/models** we create the file user.rb and add the following code:
+
+{% highlight ruby %}
+describe Contact do
+  it "has a valid factory"
+  it "is invalid without a tname"
+  it "is invalid without an email"
+  it "is invalid wit a duplicate email"
+  it "is invalid without a password"
+end
 {% endhighlight %}
 
 ----
