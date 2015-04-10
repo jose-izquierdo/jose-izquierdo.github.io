@@ -40,17 +40,32 @@ ActionDispatch::Callbacks.after do
 end    
 {% endhighlight %}
 
-2.- Let's create our model spec. Under **spec/models** we create the file user.rb and add the following code:
+2.- Let's create our model spec. Under **spec/models** we create the file **user.rb** and add the following code:
 
 {% highlight ruby %}
-describe Contact do
+describe User do
   it "has a valid factory"
-  it "is invalid without a tname"
+  it "is invalid without a name"
   it "is invalid without an email"
   it "is invalid wit a duplicate email"
   it "is invalid without a password"
 end
 {% endhighlight %}
+
+3.- Let's write our first spec:
+
+{% highlight ruby %}
+describe User do
+  it "has a valid factory"
+    expect(FactoryGirl.build(:user)).to be_valid
+  end	
+  it "is invalid without a name"
+  it "is invalid without an email"
+  it "is invalid wit a duplicate email"
+  it "is invalid without a password"
+end
+{% endhighlight %}
+
 
 ----
 ## RESOURCES
