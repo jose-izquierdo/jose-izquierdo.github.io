@@ -40,7 +40,7 @@ ActionDispatch::Callbacks.after do
 end    
 {% endhighlight %}
 
-2.- Let's create our model spec. Under **spec/models** we create the file **user.rb** and add the following code:
+2.- Let's create our model spec. Under **spec/models** we create the file **user_spec.rb** and add the following code:
 
 {% highlight ruby %}
 describe User do
@@ -65,6 +65,10 @@ describe User do
   it "is invalid without a password"
 end
 {% endhighlight %}
+
+4.- In order to run the test we have to execute the followin command on the terminal:
+		
+	$ rspec spec/models/user_spec.rb
 
 
 ----
