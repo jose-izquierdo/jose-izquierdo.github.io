@@ -70,6 +70,22 @@ end
 		
 	$ rspec spec/models/user_spec.rb
 
+5.- Let's continue adding the rest of the code for our tests:
+
+{% highlight ruby %}
+describe User do
+  it "has a valid factory"
+    expect(FactoryGirl.build(:user)).to be_valid
+  end	
+  it "is invalid without a name"
+    expect(FactoryGirl.build(:user, name: nil)).to be_invalid
+  end
+  it "is invalid without an email"
+  it "is invalid wit a duplicate email"
+  it "is invalid without a password"
+end
+{% endhighlight %}
+
 
 ----
 ## RESOURCES
