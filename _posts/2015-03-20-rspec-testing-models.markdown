@@ -80,7 +80,9 @@ describe User do
   it "is invalid without a name"
     expect(FactoryGirl.build(:user, name: nil)).to be_invalid
   end
-  it "is invalid without an email"
+  it "is invalid without an email" do
+    expect(FactoryGirl.build(:admin, email: nil)).to be_invalid
+  end
   it "is invalid wit a duplicate email"
   it "is invalid without a password"
 end
