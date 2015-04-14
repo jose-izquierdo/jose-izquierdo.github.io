@@ -81,7 +81,7 @@ describe User do
     expect(FactoryGirl.build(:user, name: nil)).to be_invalid
   end
   it "is invalid without an email" do
-    expect(FactoryGirl.build(:admin, email: nil)).to be_invalid
+    expect(FactoryGirl.build(:user, email: nil)).to be_invalid
   end
   it "is invalid wit a duplicate email"
   it "is invalid without a password"
