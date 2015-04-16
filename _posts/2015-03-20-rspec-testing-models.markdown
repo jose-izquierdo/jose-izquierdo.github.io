@@ -84,8 +84,8 @@ describe User do
     expect(FactoryGirl.build(:user, email: nil)).to be_invalid
   end
   it "is invalid wit a duplicate email" do
-    FactoryGirl.create(:admin, email: 'johnconnor@coffevent.com')
-    expect(FactoryGirl.build(:admin, email: 'johnconnor@coffevent.com')).to be_invalid
+    FactoryGirl.create(:user, email: 'johnconnor@coffevent.com')
+    expect(FactoryGirl.build(:user, email: 'johnconnor@coffevent.com')).to be_invalid
   end
   it "is invalid without a password"
 end
