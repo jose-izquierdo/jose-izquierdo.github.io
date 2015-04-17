@@ -87,7 +87,9 @@ describe User do
     FactoryGirl.create(:user, email: 'johnconnor@coffevent.com')
     expect(FactoryGirl.build(:user, email: 'johnconnor@coffevent.com')).to be_invalid
   end
-  it "is invalid without a password"
+  it "is invalid without a password" do
+    expect(FactoryGirl.build(:admin, password: nil)).to be_invalid
+  end
 end
 {% endhighlight %}
 
