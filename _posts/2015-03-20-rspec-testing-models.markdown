@@ -93,6 +93,21 @@ describe User do
 end
 {% endhighlight %}
 
+6.- Let's test our **event** model
+
+{% highlight ruby %}
+describe Event do
+  it 'has a valid factory'
+  it 'is invalid without a name'
+  it 'is invalid without a description'
+  it 'is invalid without an event type'
+  it 'is invalid without a location' 
+  it 'is invalid without a start date' 
+  it 'is invalid without a start date' 
+end 
+
+{% endhighlight %}
+
 
 ----
 ## RESOURCES
