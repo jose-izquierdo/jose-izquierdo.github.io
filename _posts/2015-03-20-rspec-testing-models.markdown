@@ -97,7 +97,9 @@ end
 
 {% highlight ruby %}
 describe Event do
-  it 'has a valid factory'
+  it 'has a valid factory' do
+    expect(FactoryGirl.build(:event)).to be_valid
+  end
   it 'is invalid without a name'
   it 'is invalid without a description'
   it 'is invalid without an event type'
