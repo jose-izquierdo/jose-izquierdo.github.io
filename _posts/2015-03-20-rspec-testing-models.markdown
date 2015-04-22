@@ -93,14 +93,16 @@ describe User do
 end
 {% endhighlight %}
 
-6.- Let's test our **event** model
+6.- Let's test our **event** model and see a few differences. 
 
 {% highlight ruby %}
 describe Event do
   it 'has a valid factory' do
     expect(FactoryGirl.build(:event)).to be_valid
   end
-  it 'is invalid without a name'
+  it 'is invalid without a name' do 
+    expect(FactoryGirl.build(:event, name: nil)).to be_invalid
+  end
   it 'is invalid without a description'
   it 'is invalid without an event type'
   it 'is invalid without a location' 
