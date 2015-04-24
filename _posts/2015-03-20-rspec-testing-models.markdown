@@ -109,7 +109,9 @@ describe Event do
   it 'is invalid without an event type' do 
     expect(FactoryGirl.build(:event, event_type: nil)).to be_invalid
   end
-  it 'is invalid without a location' 
+  it 'is invalid without a location' do 
+    expect(FactoryGirl.build(:event, location: nil)).to be_invalid
+  end
   it 'is invalid without a start date' 
   it 'is invalid without a start date' 
 end 
