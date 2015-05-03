@@ -115,7 +115,9 @@ describe Event do
   it 'is invalid without a start date' do 
     expect(FactoryGirl.build(:event, start_date: nil)).to be_invalid
   end
-  it 'is invalid without a start date' 
+  it 'is invalid without a end date' do 
+    expect(FactoryGirl.build(:event, end_date: nil)).to be_invalid
+  end
 end 
 
 {% endhighlight %}
