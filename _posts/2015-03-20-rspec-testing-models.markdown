@@ -129,6 +129,3 @@ end
 http://blog.thefrontiergroup.com.au/2011/03/reloading-factory-girl-factories-in-the-rails-3-console/
  https://github.com/stympy/faker
 
-----
-
-#UNDER
