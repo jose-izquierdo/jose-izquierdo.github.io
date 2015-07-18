@@ -199,7 +199,13 @@ end
 
 
 ---
+<br>
+#RESOURCES
+<br>
 
+	Agile Web Development With Rails - Pag 175
+
+	http://guides.rubyonrails.org/4_1_release_notes.html#action-mailer-previews
 
 
 
