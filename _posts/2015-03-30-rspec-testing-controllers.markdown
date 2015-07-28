@@ -5,7 +5,24 @@ date:   2015-03-20 10:00:00
 categories: rails, testing
 ---
 
-1.- Config support/spec/devise
+1.- Normally there is a problem popping up when reloading Factory Girl Factories in the Rails 3 Console. When you hit reload, the factories either stop working or will point out to the wrong class in Rails' console. This all happen due to devise. The problem comes up because devise uses a mapping between classes and routes, so when a factory built object comes through to Devise after a console reload, or a class redefinition then it will fail. This is a usual problem in development and test environments. 
+
+Therefore, in order to reload Factories to have everything working you have to put the following chunk of code in **config/application.rb**
+
+{% highlight ruby %}
+
+  ActionDispatch::Callbacks.after do
+    # Reload the factories
+      return unless (Rails.env.development? || Rails.env.test?)
+      unless FactoryGirl.factories.blank? # first init will load factories, this should only run on subsequent reloads
+        FactoryGirl.factories.clear
+        FactoryGirl.find_definitions
+      end
+    end
+
+{% endhighlight %}
+
+Config support/spec/devise
 
 2.- Confic rails_helper
 	Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
