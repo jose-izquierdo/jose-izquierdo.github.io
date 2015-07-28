@@ -24,8 +24,13 @@ Therefore, in order to reload Factories to have everything working you have to p
 
 Config support/spec/devise
 
-2.- Confic rails_helper
-	Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+2.- Now, add the following line to **spec/rails_helper.rb** file. 
+
+{% highlight ruby %}
+
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+
+{% endhighlight %}
 
 3.-
 
