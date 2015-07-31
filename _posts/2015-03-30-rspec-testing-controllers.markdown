@@ -1,13 +1,13 @@
 ---
 layout: post
-title:  "Testing in Rails Part 3: Testing Controllers"
+title:  "Testing in Rails Part 2: Testing Controllers"
 date:   2015-03-20 10:00:00
 categories: rails, testing
 ---
 
 There are a couple of previous steps of configurations before to get your hands into the tests.
 
-1.- Normally there is a problem popping up when reloading Factory Girl Factories in the Rails 3 Console. When you hit reload, the factories either stop working or will point out to the wrong class in Rails' console. This all happen due to devise. The problem comes up because devise uses a mapping between classes and routes, so when a factory built object comes through to Devise after a console reload, or a class redefinition then it will fail. This is a usual problem in development and test environments. 
+1.- Normally there is a problem popping up when reloading Factory Girl Factories in the Rails 3 Console. When you hit reload, the factories either stop working or will point out to the wrong class in Rails' console. This all happen due to devise. The problem comes up because devise uses a mapping between classes and routes, so when a factory built object comes through to Devise after a console reload, or a class redefinition then it will fail. This is a usual problem in development and test environments.
 
 Therefore, in order to reload Factories to have everything working you have to put the following chunk of code in **config/application.rb**
 
@@ -25,7 +25,7 @@ Therefore, in order to reload Factories to have everything working you have to p
 {% endhighlight %}
 
 
-2.- Now, add the following line to **spec/rails_helper.rb** file. 
+2.- Now, add the following line to **spec/rails_helper.rb** file.
 
 {% highlight ruby %}
 
