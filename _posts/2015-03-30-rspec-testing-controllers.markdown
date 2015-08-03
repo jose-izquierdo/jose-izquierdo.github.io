@@ -48,6 +48,25 @@ describe 'GET #index' do
 
 {% endhighlight %}
 
+4.-
+
+Just before to start testing, there are another couple of things to have into account. First, I'm using devise for authentication and the user must be logged in before doing any action. Moreover, I'm using FactoryGirls. Last but not least, The user should be able to do CRUD over the event passing valid and invalid attributes. So having said that, the first step is to create the Factory for the user, sign in the user, and create the Factory for the event we are going to test, and this should be get done before to execute any test. Therefore, in the **spec/controllers/events_controller_spec.rb** file:
+
+{% highlight ruby %}
+
+require 'rails_helper'
+
+describe EventsController do
+
+	before do
+      @user = FactoryGirl.create(:user)
+      sign_in @user
+      @event = FactoryGirl.create(:event, user: @user)
+	end
+end
+
+{% endhighlight %}
+
 #ON CONSTRUCTION
 
 #RESOURCES
