@@ -67,6 +67,21 @@ end
 
 {% endhighlight %}
 
+5.- Let's start testing **index** adding the following code:
+
+{% highlight ruby %}
+
+describe 'GET #index' do
+
+		it 'populates an array of events' do
+		    get :index, { :user_id => @user  }
+		    expect(assigns(:events)).to eq(@user.reload.events)
+		end
+
+	end
+  
+{% endhighlight %}
+
 #ON CONSTRUCTION
 
 #RESOURCES
