@@ -78,6 +78,12 @@ describe 'GET #index' do
 		    expect(assigns(:events)).to eq(@user.reload.events)
 		end
 
+		it 'renders the index view' do
+			get :index
+			expect(response).to be_success
+			expect(response).to have_http_status(200)
+		end
+
 	end
   
 {% endhighlight %}
