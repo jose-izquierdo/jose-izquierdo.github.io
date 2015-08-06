@@ -122,8 +122,27 @@ describe 'GET #show' do
 		end
 
 	end
-  
+
 {% endhighlight %}
+
+8.- Get #Update
+
+{% highlight ruby %}
+
+describe 'GET #edit / update' do
+
+		context "with valid attributes" do
+
+			it 'renders the :edit view' do
+				get :edit, { :id => @event  }
+				expect(response).to be_success
+				expect(response).to have_http_status(200)
+			end
+
+		end
+
+{% endhighlight %}
+
 
 
 #ON CONSTRUCTION
