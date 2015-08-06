@@ -85,8 +85,46 @@ describe 'GET #index' do
 		end
 
 	end
+
+{% endhighlight %}
+
+6.- The next step is to test 'Get #new'
+
+{% highlight ruby %}
+
+describe 'GET #new' do
+
+		it 'renders the :new view' do
+			get :new
+			expect(response).to be_success
+			expect(response).to have_http_status(200)
+		end
+
+	end
+
+{% endhighlight %}
+
+7.- Get #Show
+
+{% highlight ruby %}
+
+describe 'GET #show' do
+
+		it 'shows the requested @event' do
+			get :show, id: @event
+			expect(assigns(:event)).to eq(@event)
+		end
+
+		it 'renders the :show view' do
+			get :show, { :id => @event  }
+			expect(response).to be_success
+			expect(response).to have_http_status(200)
+		end
+
+	end
   
 {% endhighlight %}
+
 
 #ON CONSTRUCTION
 
