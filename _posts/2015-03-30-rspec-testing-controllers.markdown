@@ -139,7 +139,16 @@ describe 'GET #edit / update' do
 				expect(response).to have_http_status(200)
 			end
 
+			it 'updates the event' do
+				patch :update, id: @event.id, event: FactoryGirl.attributes_for(:event, name: "Anakin")
+				@event.reload
+				expect(@event.name).to eq("Anakin")
+
+			end
+
+
 		end
+end
 
 {% endhighlight %}
 
