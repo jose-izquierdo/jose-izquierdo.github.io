@@ -146,7 +146,10 @@ describe 'GET #edit / update' do
 
 			end
 
-
+			it 'sends an email when event is updated' do
+	    		expect {patch :update, id: @event.id, event: FactoryGirl.attributes_for(:event, name: "Han Solo")
+	    			}.to change {ActionMailer::Base.deliveries.count }.by(1)
+		    end
 		end
 end
 
