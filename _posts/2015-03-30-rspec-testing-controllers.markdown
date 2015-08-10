@@ -151,6 +151,14 @@ describe 'GET #edit / update' do
 	    			}.to change {ActionMailer::Base.deliveries.count }.by(1)
 		    end
 		end
+
+    context "with invalid attributes" do
+
+			it 'does not update the event with invalid attributes' do
+				patch :update, id: @event.id, event: FactoryGirl.attributes_for(:event, name: nil)
+				expect(response).to render_template :edit
+			end
+    end
 end
 
 {% endhighlight %}
