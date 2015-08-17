@@ -166,6 +166,24 @@ describe 'GET #edit / update' do
     end
 end
 
+
+{% endhighlight %}
+
+9.- Event #Create
+
+{% highlight ruby %}
+
+  describe 'EVENT create' do
+
+		context 'with valid attributes' do
+			
+			it 'creates a new event' do
+				 expect{
+			        post :create, event: FactoryGirl.attributes_for(:event)
+			      }.to change(Event,:count).by(1)
+			end
+		end
+  end
 {% endhighlight %}
 
 
