@@ -182,6 +182,11 @@ end
 			        post :create, event: FactoryGirl.attributes_for(:event)
 			      }.to change(Event,:count).by(1)
 			end
+
+			it "redirects to the new event" do
+		       		post :create, event: FactoryGirl.attributes_for(:event)
+		      		expect(response).to redirect_to Event.last
+		    	end
 		end
   end
 {% endhighlight %}
