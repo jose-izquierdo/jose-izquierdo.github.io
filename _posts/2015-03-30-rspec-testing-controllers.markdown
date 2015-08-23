@@ -162,7 +162,7 @@ describe 'GET #edit / update' do
       it 'does not send the update email' do
 				expect {patch :update, id: @event.id, event: FactoryGirl.attributes_for(:event, description:nil)
 					}.to change {ActionMailer::Base.deliveries.count}.by(0)
-			end	
+			end
     end
 end
 
@@ -176,7 +176,7 @@ end
   describe 'EVENT create' do
 
 		context 'with valid attributes' do
-			
+
 			it 'creates a new event' do
 				 expect{
 			        post :create, event: FactoryGirl.attributes_for(:event)
@@ -187,6 +187,11 @@ end
 		       		post :create, event: FactoryGirl.attributes_for(:event)
 		      		expect(response).to redirect_to Event.last
 		    	end
+
+      it 'sends an email when event is created' do
+    	    expect {post :create, event: FactoryGirl.attributes_for(:event)
+    	    }.to change {ActionMailer::Base.deliveries.count }.by(1)
+    	end
 		end
   end
 {% endhighlight %}
