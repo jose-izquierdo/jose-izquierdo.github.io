@@ -188,11 +188,19 @@ end
 		      		expect(response).to redirect_to Event.last
 		    	end
 
-      it 'sends an email when event is created' do
-    	    expect {post :create, event: FactoryGirl.attributes_for(:event)
-    	    }.to change {ActionMailer::Base.deliveries.count }.by(1)
-    	end
+      			it 'sends an email when event is created' do
+    	    			expect {post :create, event: FactoryGirl.attributes_for(:event)
+    	    			}.to change {ActionMailer::Base.deliveries.count }.by(1)
+    			end
+
+	context "with invalid attributes" do
+		    it "does not save the new event" do
+		      expect{
+		        post :create, event: FactoryGirl.attributes_for(:event, name: nil)
+		      }.to_not change(Event,:count)
+		    end
 		end
+	end
   end
 {% endhighlight %}
 
