@@ -200,6 +200,10 @@ end
 		      }.to_not change(Event,:count)
 		    end
 		end
+		 it "re-renders the new method" do
+		      post :create, event: FactoryGirl.attributes_for(:event, name: nil)
+		      expect(response).to render_template :new
+		end
 	end
   end
 {% endhighlight %}
