@@ -204,6 +204,10 @@ end
 		      post :create, event: FactoryGirl.attributes_for(:event, name: nil)
 		      expect(response).to render_template :new
 		end
+		 it 'does not sends an email when event is not created' do
+	    		expect {post :create, event: FactoryGirl.attributes_for(:event, name: nil)
+	    			}.to change {ActionMailer::Base.deliveries.count }.by(0)   		
+		  end
 	end
   end
 {% endhighlight %}
