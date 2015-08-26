@@ -212,6 +212,8 @@ end
   end
 {% endhighlight %}
 
+10.- Event Destroy
+
 
 
 #ON CONSTRUCTION
