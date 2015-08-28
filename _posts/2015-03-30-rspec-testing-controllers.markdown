@@ -214,7 +214,9 @@ end
 
 10.- Event Destroy
 
+{% highlight ruby %}
 
+{% endhighlight %}
 
 #ON CONSTRUCTION
 
