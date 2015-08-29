@@ -206,7 +206,7 @@ end
 		end
 		 it 'does not sends an email when event is not created' do
 	    		expect {post :create, event: FactoryGirl.attributes_for(:event, name: nil)
-	    			}.to change {ActionMailer::Base.deliveries.count }.by(0)   		
+	    			}.to change {ActionMailer::Base.deliveries.count }.by(0)
 		  end
 	end
   end
@@ -215,7 +215,7 @@ end
 10.- Event Destroy
 
 {% highlight ruby %}
-
+chan
 {% endhighlight %}
 
 #ON CONSTRUCTION
