@@ -215,7 +215,7 @@ end
 10.- Event Destroy
 
 {% highlight ruby %}
-chan
+changes applied
 {% endhighlight %}
 
 #ON CONSTRUCTION
