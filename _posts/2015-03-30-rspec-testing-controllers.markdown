@@ -215,7 +215,10 @@ end
 10.- Event Destroy
 
 {% highlight ruby %}
-changes applied
+it 'destroys the event' do
+			expect {delete :destroy, id: @event.id, event: FactoryGirl.attributes_for(:event)
+			}.to change(Event, :count).by(-1)
+	end
 {% endhighlight %}
 
 #ON CONSTRUCTION
