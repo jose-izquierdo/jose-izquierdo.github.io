@@ -219,6 +219,12 @@ end
     expect {delete :destroy, id: @event.id, event: FactoryGirl.attributes_for(:event)}.to change(Event, :count).by(-1)
   end
 
+it 'renders index/mailer template' do
+			delete :destroy, id: @event.id, event: FactoryGirl.attributes_for(:event)
+			expect(response).to redirect_to events_path
+			expect(render_template :mailer)
+		end
+
 {% endhighlight %}
 
 #ON CONSTRUCTION
