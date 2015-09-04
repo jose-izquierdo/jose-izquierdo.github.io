@@ -224,7 +224,8 @@ end
     expect(response).to redirect_to events_path
     expect(render_template :mailer)
   end
-
+  it '' do
+  end
 {% endhighlight %}
 
 #ON CONSTRUCTION
