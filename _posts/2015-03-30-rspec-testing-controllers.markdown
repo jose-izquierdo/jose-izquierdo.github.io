@@ -225,9 +225,8 @@ end
     expect(render_template :mailer)
   end
   it 'sends the deleted event email' do
-			expect{ delete :destroy, id: @event.id, event: FactoryGirl.attributes_for(:event)
-				}.to change{ActionMailer::Base.deliveries.count}.by(1)
-		end
+			expect{ delete :destroy, id: @event.id, event: FactoryGirl.attributes_for(:event)}.to change{ActionMailer::Base.deliveries.count}.by(1)
+  end
 {% endhighlight %}
 
 #ON CONSTRUCTION
